@@ -1,0 +1,504 @@
+@import 'variables';
+@import 'mixins';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: $fontFamily;
+}
+html {
+    font-size: 16px;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+body {
+    width: 100%;
+    height: 100%;
+    font-weight: $fontWeight;
+    @include flexbox($direction: column);
+    color: $grayishViolet;
+}
+h1, h2, h3 {
+    font-weight: 700;
+    color: $veryDarkViolet;
+}
+h1 {
+    font-size: 2.2rem;
+}
+button {
+    border: none;
+    border-radius: 25rem;
+    cursor: pointer;
+    background-color: $cyan;
+    color: white;
+    font-weight: 700;
+    @include flexbox;
+    transition: $transition;
+    &:hover {
+        filter: brightness(120%) grayscale(20%) opacity(.9);
+    }
+}
+
+ul {
+    list-style: none;
+    @include flexbox($direction: column, $gap: 1rem);
+    li {
+        cursor: pointer;
+        transition: $transition;
+    }
+}
+
+header {
+    width: 100%;
+    padding: 0 6%;
+    height: 5rem;
+    @include flexbox($justify: space-between);
+    img {
+        width: 6.5rem;
+    }
+    svg {
+        transform: scale(1.7);
+        cursor: pointer;
+    }
+    .toggle-menu {
+        position: absolute;
+        top: 4.5rem;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 88%;
+        padding: 2rem;
+        border-radius: 0.6rem;
+        color: white;
+        font-weight: 700;
+        background-color: $darkViolet;
+        @include flexbox($direction: column);
+        display: none;
+        ul {
+            margin-bottom: 1rem;
+        }
+        hr {
+            border: none;
+            height: 1px;
+            width: 100%;
+            background-color: $grayishViolet;
+            margin-bottom: 1rem;
+        }
+        .btns {
+            width: 100%;
+            @include flexbox($direction: column, $gap: 1rem);
+            button {
+                width: 100%;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+            button:first-of-type {
+                background: none;
+            }
+            button:last-of-type {
+                background: $cyan;
+            }
+        }
+    }
+}
+
+.hero {
+    width: 100%;
+    overflow-x: hidden;
+    @include flexbox($direction: column, $gap: 2rem);
+    img {
+        width: 130%;
+        margin-right: -9rem;
+    }
+    .description {
+        @include flexbox($direction: column, $gap: 1rem);
+        padding: 0 6%;
+        margin-bottom: 5rem;
+        text-align: center;
+        button {
+            margin-top: .5rem;
+            width: 55%;
+            height: 3rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.05rem;
+        }
+    }
+}
+
+.shorten-link {
+    width: 100%;
+    margin-top: 3rem;
+    z-index: 3;
+    background-color: rgba($darkViolet, 0.05);
+    @include flexbox($direction: column, $gap: 1.5rem);
+    form {
+        width: 88%;
+        margin-top: -3rem;
+        border-radius: .7rem;
+        padding: 1.5rem;
+        background-image: url(../images/bg-shorten-mobile.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 90% 0;
+        background-color: $darkViolet;
+        @include flexbox($direction: column, $align: flex-start, $gap: 1rem);
+        input, button {
+            width: 100%;
+            height: 3rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            border: solid 3px transparent;
+            outline: transparent;
+            color: $veryDarkViolet;
+        }
+        .copied {
+            background-color: $darkViolet;
+        }
+        button {
+            font-size: 1.1rem;
+            color: white;
+        }
+        .message {
+            color: $red;
+            font-size: .85rem;
+            
+            display: none;
+            margin-top: -0.8rem;
+        }
+    }
+    .results {
+        width: 100%;
+        @include flexbox($direction: column, $gap: 1rem);
+        display: none;
+        .result {
+            @include flexbox($direction: column, $align: flex-start, $gap: 1rem);
+        background-color: white;
+        border-radius: .6rem;
+        padding: 1rem;
+        width: 88%;
+        .original {
+            color: $veryDarkViolet;
+        }
+        .update {
+            color: $cyan;
+        }
+        hr {
+            width: calc(100% + 2rem);
+            margin-left: -1rem;
+            background-color: $gray;
+            height: 1px;
+            border: none;
+        }
+        button {
+            width: 100%;
+            height: 2.5rem;
+            border-radius: .3rem;
+            font-size: 1rem;
+            text-transform: capitalize;
+            @include flexbox;
+        }
+        }
+
+        
+    }
+    
+}
+
+.features {
+    width: 100%;
+    padding: 6rem 6% 4rem;
+    text-align: center;
+    background-color: rgba($darkViolet, 0.05);
+    @include flexbox($direction: column, $gap:1rem);
+    article {
+        background-color: white;
+        margin-top: 3rem;
+        border-radius: 0.6rem;
+        padding: 2rem 1.5rem;
+        z-index: 5;
+        @include flexbox($direction: column, $gap:1rem);
+        div {
+            background-color: $darkViolet;
+            border-radius: 50%;
+            width: 5rem;
+            height: 5rem;
+            margin-top: -4.5rem;
+            margin-bottom: 1rem;
+            @include flexbox;
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        p {
+            line-height: 1.5;
+        }
+    }
+    hr {
+        width: 6rem;
+        height: .6rem;
+        background-color: $cyan;
+        border: none;
+        transform: rotate(90deg);
+    }
+}
+
+.action {
+    width: 100%;
+    background-color: $darkViolet;
+    background-image: url(../images/bg-boost-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    padding: 4rem 0;
+    @include flexbox($direction: column, $gap: 1rem);
+    h2 {
+        color: white;
+    }
+    button {
+        width: 50%;
+        height: 3rem;
+        font-size: 1.1rem;
+    }
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    @include flexbox($direction: column, $gap: 2rem);
+    background-color: $veryDarkViolet;
+    color: white;
+    padding: 3rem;
+    img.logo {
+        filter: invert(100) brightness(300%);
+        margin-bottom: 1rem;
+    }
+    article {
+        @include flexbox($direction: column, $gap: 1.3rem);
+        ul {
+            gap: 0.5rem;
+            li {
+                color: $grayishViolet;
+                &:hover {
+                    color: $cyan;
+                }
+            }
+        }
+    }
+    .icons {
+        margin-top: 0.5rem;
+        @include flexbox($gap: 1.5rem);
+        svg {
+            cursor: pointer;
+            width: 1.7rem;
+            height: 1.7rem;
+            transition: $transition;
+                &:hover {
+                    fill: $cyan;
+                }
+        }
+        svg:last-of-type {
+            &:hover {
+                fill: none;
+                stroke: $cyan;
+            }
+        }
+    }
+}
+
+
+
+@media (min-width: 1024px) {
+    html {
+        font-size: 18px;
+    }
+    h1 {
+        font-size: 3.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    header {
+        padding: 0 10%;
+        height: 8rem;
+        img {
+            width: 7rem;
+        }
+        svg {
+            display: none;
+        }
+        .toggle-menu {
+            position: relative;
+            top: 0;
+            margin-left: 4rem;
+            width: 100%;
+            padding: 0;
+            border-radius: 0;
+            color: $grayishViolet;
+            background-color: transparent;
+            @include flexbox($direction: row, $justify: space-between);
+            ul {
+                margin-bottom: 0;
+                @include flexbox($gap: 3rem);
+                li {
+                    &:hover {
+                        color: $veryDarkBlue;
+                    }
+                }
+            }
+            hr {
+                display: none;
+            }
+            .btns {
+                width: 25%;
+                @include flexbox($direction: row, $gap: 2.5rem);
+                button {
+                    width: 7.5rem;
+                    font-size: .9rem;
+                }
+                button:first-of-type {
+                    color: $grayishViolet;
+                }
+            }
+        }
+    }
+    .hero {
+        margin-bottom: 5rem;
+        @include flexbox($direction: row, $gap: 2rem);
+        img {
+            width: 60%;
+            height: 30rem;
+            margin-right: -5rem;
+            order: 2;
+        }
+        .description {
+            @include flexbox($direction: column, $align: flex-start, $gap: 1rem);
+            padding: 0 5% 0 10%;
+            margin-bottom: 0;
+            text-align: left;
+            button {
+                margin-top: .7rem;
+                width: 35%;
+            }
+        }
+    }
+    .shorten-link {
+        form {
+            position: relative;
+            width: 80%;
+            margin-top: -5rem;
+            padding: 3rem;
+            background-image: url(../images/bg-shorten-desktop.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: 90% 0;
+            @include flexbox($direction: row, $align: flex-start, $gap: 1rem);
+            input {
+                width: 75%;
+            }
+            button {
+                width: 20%;
+                font-size: 1rem;
+            }
+            .message {
+                position: absolute;
+                top: 7.2rem;
+                left: 4rem;
+                display: none;
+            }
+        }
+        .results {
+            display: none;
+            .result {
+                @include flexbox($direction: row, $justify: space-between, $gap: 1rem);
+                width: 80%;
+                .original {
+                    width: 40%;
+                }
+            .update {
+                margin-left: 25%;
+            }
+            hr {
+                display: none;
+            }
+            button {
+                width: 10%;
+            }
+            }
+        }
+    }
+    .features {
+        padding: 6rem 10%;
+        position: relative;
+        @include flexbox($direction: row, $gap:2rem);
+        h2, .fea-intro {
+            position: absolute;
+            top: 6rem;
+        }
+        .fea-intro {
+            top: 9.5rem;
+            width: 40%;
+        }
+        article {
+            margin-top: 11rem;
+            height: 17rem;
+            text-align: left;
+            align-items: flex-start;
+            div {
+                margin-top: -6rem;
+            }
+        }
+        article:first-of-type {
+            margin-top: 6rem;
+        }
+        article:last-of-type {
+            margin-top: 16rem;
+            div {
+                margin-top: -5rem;
+            }
+        }
+        hr {
+            position: absolute;
+            top: 28rem;
+            left: 20%;
+            width: 40rem;
+            height: .6rem;
+            transform: rotate(0);
+        }
+    }
+    .action {
+        background-image: url(../images/bg-boost-desktop.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        gap: 1.5rem;
+        button {
+            width: 15%;
+        }
+    }
+    footer {
+        text-align: left;
+        padding: 5rem 10% 3rem;
+        @include flexbox($direction: row, $justify: space-between, $align: flex-start, $gap: 5rem);
+        img.logo {
+            margin-bottom: 0;
+        }
+        article {
+            align-items: flex-start;
+            ul {
+                align-items: flex-start;
+            }
+        }
+        article:first-of-type {
+            margin-left: 15%;
+        }
+        .icons {
+            margin-top: 0;
+        }
+    }
+}
